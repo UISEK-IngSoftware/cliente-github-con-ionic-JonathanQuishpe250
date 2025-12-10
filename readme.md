@@ -3,7 +3,7 @@
 
 ## Información del Estudiante
 
-- **Nombre:** JOnathan Quishpe Defaz
+- **Nombre:** Jonathan Quishpe Defaz
 - **Carrera:** Ingeniería de Software
 - **Fecha de inicio:** 09/12/2025
 
