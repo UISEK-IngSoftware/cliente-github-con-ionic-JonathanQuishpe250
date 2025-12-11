@@ -3,9 +3,9 @@
 
 ## Información del Estudiante
 
-- **Nombre:** [Tu nombre completo aquí]
-- **Carrera:** [Tu carrera]
-- **Fecha de inicio:** [Fecha]
+- **Nombre:** Jonathan Quishpe Defaz
+- **Carrera:** Ingeniería de Software
+- **Fecha de inicio:** 09/12/2025
 
 ---
 
