@@ -1,16 +1,37 @@
-import './ExploreContainer.css';
+import './RepoItem.css';
+import React from 'react';
+import {
+  IonItem,
+  IonLabel,
+  IonThumbnail,
+} from '@ionic/react';
+import { RepositoryItem } from '../interfaces/RepositoryItem';
 
-interface ContainerProps {
-  name: string;
+interface RepoProps {
+  repo: RepositoryItem;
 }
 
-const ExploreContainer: React.FC<ContainerProps> = ({ name }) => {
+const RepoItem: React.FC<RepoProps> = ({ repo }) => {
   return (
-    <div className="container">
-      <strong>{name}</strong>
-      <p>Explore <a target="_blank" rel="noopener noreferrer" href="https://ionicframework.com/docs/components">UI Components</a></p>
-    </div>
+    <IonItem>
+      <IonThumbnail slot="start">
+        <img
+          alt="Silhouette of mountains"
+          src={
+            repo.imageUrl ||
+            'https://ionicframework.com/docs/img/demos/thumbnail.svg'
+          }
+        />
+      </IonThumbnail>
+
+      <IonLabel>
+        <h2>{repo.name}</h2>
+        <p>{repo.description}</p>
+        <p>Propietario: {repo.owner}</p>
+        <p>Lenguaje: {repo.language}</p>
+      </IonLabel>
+    </IonItem>
   );
 };
 
-export default ExploreContainer;
+export default RepoItem;
