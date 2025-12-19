@@ -1,33 +1,39 @@
-import axios from "axios";
-import { RepositoryItem } from "../interfaces/RepositoryItem";
+import './RepoItem.css';
+import React from 'react';
+import {
+  IonItem,
+  IonLabel,
+  IonThumbnail,
+} from '@ionic/react';
+import { RepositoryItem } from '../interfaces/RepositoryItem';
 
-const GITHUB_API_URL = "https://api.github.com";
-const GITHUB_API_TOKEN = "ghp_xxxxxxxxxxxxxx"; // Remplazar con un token válido
+const RepoItem: React.FC<{ repo: RepositoryItem }> = ({ repo }) => {
+  return (
+    <IonItem>
+      <IonThumbnail slot="start">
+        <img
+          alt="Repository image"
+          src={
+            repo.imageUrl ||
+            "https://ionicframework.com/docs/img/demos/thumbnail.svg"
+          }
+        />
+      </IonThumbnail>
 
-export const fetchRepositories = async (): Promise<RepositoryItem[]> => {
-  try {
-    const response = await axios.get(`${GITHUB_API_URL}/user/repos`, {
-      headers: {
-        Authorization: `Bearer ${GITHUB_API_TOKEN}`,
-      },
-      params: {
-        per_page: 100,
-        sort: "created",
-        direction: "desc",
-      },
-    });
-
-    const reposData: RepositoryItem[] = response.data.map((repo: any) => ({
-      name: repo.name,
-      description: repo.description || null,
-      imageUrl: repo.owner?.avatar_url || null,
-      owner: repo.owner?.login || null,
-      language: repo.language || null,
-    }));
-
-    return reposData;
-  } catch (error) {
-    console.error("Error fetching repositories:", error);
-    return [];
-  }
+      <IonLabel>
+        <h2>{repo.name}</h2>
+        <p>{repo.description}</p>
+        <p>
+          <strong>Propietario: </strong>
+          {repo.owner}
+        </p>
+        <p>
+          <strong>Lenguaje: </strong>
+          {repo.language}
+        </p>
+      </IonLabel>
+    </IonItem>
+  );
 };
+
+export default RepoItem;
